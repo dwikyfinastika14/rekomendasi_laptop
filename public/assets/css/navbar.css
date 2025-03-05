@@ -1,0 +1,27 @@
+.smsp-navbar {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #041c33), color-stop(1, #093966));
+  border-bottom: 1px solid #052039;
+  border-top: 1px solid #093966;
+}
+
+.nav-item {
+  color: #3d474c !important;
+}
+
+.nav-link {
+  color: #3d474c;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #3d474c;
+}
+
+.fa.fa-power-off.icon-off {
+  font-size: 20px;
+  color: rgb(132,182,230);
+}
+
+.smsp-logo {
+  width: 120px;
+}
+

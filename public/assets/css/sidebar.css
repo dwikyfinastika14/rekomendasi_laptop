@@ -1,0 +1,93 @@
+/* PENGATURAN SIDEBAR LEFT ( L ) */
+
+#sidebar-wrapper-L {
+  z-index: 1000!important;
+  position: fixed!important;
+  left: 250px!important;
+  width: 0!important;
+  height: 100%!important;
+  margin-left: -250px!important;
+  overflow-y: auto!important;
+  background: #F5F5F5 !important;
+  -webkit-transition: all 0.5s ease!important;
+  -moz-transition: all 0.5s ease!important;
+  transition: all 0.5s ease!important;
+  /*border: 0.3px solid #d8d8d9!important;*/
+}
+
+#wrapper-L.toggled-L #sidebar-wrapper-L {
+  width: 250px!important;
+}
+
+#wrapper-L {
+  padding-left: 0px!important;
+  -webkit-transition: all 0.5s ease!important;
+  -moz-transition: all 0.5s ease!important;
+  transition: all 0.5s ease!important;
+}
+
+#wrapper-L.toggled-L {
+  padding-left: 250px!important;
+}
+
+@media (min-width:768px) {
+  #wrapper-L.toggled-L #sidebar-wrapper-L {
+    width: 250px!important;
+  }
+}
+
+@media (min-width:768px) {
+  #wrapper-L {
+    padding-left: 250px!important;
+  }
+}
+
+@media (min-width:768px) {
+  #wrapper-L.toggled-L {
+    position: relative!important;
+    margin-right: 0px!important;
+    padding-left: 0px!important;
+  }
+}
+
+@media (min-width:768px) {
+  #sidebar-wrapper-L {
+    width: 250px!important;
+  }
+}
+
+@media (min-width:768px) {
+  #wrapper-L.toggled-L #sidebar-wrapper-L {
+    width: 0px!important;
+  }
+}
+
+/* PENGATURAN ICON SIDEBAR LEFT ( L ) */
+
+.icon-sidebar-L {
+  color: #f3f3f4;
+  margin: 0px 10px 0px 0px;
+  padding: 5px 5px 5px 5px;
+  border-radius: 2px;
+  border: 0.5px solid #434f67;
+  background: #093966;
+}
+
+.smsp-icon-sidebar {
+  width: 20px;
+}
+
+.smsp-text-sidebar {
+  margin-bottom: 10px;
+  color: #625F5F;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+.item-1.collapse-show-item-accordion-L.smsp-sub-sidebar {
+  background-color: #E4F0FC;
+}
+

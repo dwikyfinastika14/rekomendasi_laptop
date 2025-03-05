@@ -1,0 +1,63 @@
+.icon-accordion-L {
+  color: rgba(255,169,0,0.68);
+  margin: 0px 0px 7px 0px;
+  padding: 11px 10px 10px 12px;
+  border-radius: 10px;
+  border: 0.5px solid #4f3d3d;
+  background: rgba(0,0,0,0.25);
+  font-size: 25px;
+}
+
+.paragraph-icon-accordion-L {
+  color: #a37575;
+}
+
+.card-accordion-L {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fafafa;
+  background-clip: border-box;
+  /*border: 0.5px solid #e4f0fc;*/
+  border-radius: 0px;
+}
+
+.card-header-accordion-L:first-child {
+  border-radius: 0px!important;
+}
+
+.card-header-accordion-L {
+  padding: .75rem 1.25rem;
+  margin-bottom: -1px!important;
+  background-color: rgb(9,56,101);
+  /*background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #48546e), color-stop(1, #404b62));*/
+  border-top: 0.8px solid #f0f7fd;
+  border-bottom: 0.8px solid #f0f7fd;
+}
+
+.mb-0 {
+  margin-bottom: 0!important;
+  font-size: 14px!important;
+}
+
+.icon-accordion {
+  margin-right: 10px;
+  font-size: 14px;
+  color: #E4F0FC;
+}
+
+.content-accordion {
+  color: rgb(81,96,123);
+  font-size: 12px;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #ffffff!important;
+  background-color: #08345e;
+  border-color: #626e88 #626e88 #626e88;
+}
+
