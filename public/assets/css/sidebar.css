@@ -1,64 +1,64 @@
 /* PENGATURAN SIDEBAR LEFT ( L ) */
 
 #sidebar-wrapper-L {
-  z-index: 1000!important;
-  position: fixed!important;
-  left: 250px!important;
-  width: 0!important;
-  height: 100%!important;
-  margin-left: -250px!important;
-  overflow-y: auto!important;
+  z-index: 1000 !important;
+  position: fixed !important;
+  left: 250px !important;
+  width: 0 !important;
+  height: 100% !important;
+  margin-left: -250px !important;
+  overflow-y: auto !important;
   background: #F5F5F5 !important;
-  -webkit-transition: all 0.5s ease!important;
-  -moz-transition: all 0.5s ease!important;
-  transition: all 0.5s ease!important;
+  -webkit-transition: all 0.5s ease !important;
+  -moz-transition: all 0.5s ease !important;
+  transition: all 0.5s ease !important;
   /*border: 0.3px solid #d8d8d9!important;*/
 }
 
 #wrapper-L.toggled-L #sidebar-wrapper-L {
-  width: 250px!important;
+  width: 250px !important;
 }
 
 #wrapper-L {
-  padding-left: 0px!important;
-  -webkit-transition: all 0.5s ease!important;
-  -moz-transition: all 0.5s ease!important;
-  transition: all 0.5s ease!important;
+  padding-left: 0px !important;
+  -webkit-transition: all 0.5s ease !important;
+  -moz-transition: all 0.5s ease !important;
+  transition: all 0.5s ease !important;
 }
 
 #wrapper-L.toggled-L {
-  padding-left: 250px!important;
+  padding-left: 250px !important;
 }
 
 @media (min-width:768px) {
   #wrapper-L.toggled-L #sidebar-wrapper-L {
-    width: 250px!important;
+    width: 250px !important;
   }
 }
 
 @media (min-width:768px) {
   #wrapper-L {
-    padding-left: 250px!important;
+    padding-left: 250px !important;
   }
 }
 
 @media (min-width:768px) {
   #wrapper-L.toggled-L {
-    position: relative!important;
-    margin-right: 0px!important;
-    padding-left: 0px!important;
+    position: relative !important;
+    margin-right: 0px !important;
+    padding-left: 0px !important;
   }
 }
 
 @media (min-width:768px) {
   #sidebar-wrapper-L {
-    width: 250px!important;
+    width: 250px !important;
   }
 }
 
 @media (min-width:768px) {
   #wrapper-L.toggled-L #sidebar-wrapper-L {
-    width: 0px!important;
+    width: 0px !important;
   }
 }
 
@@ -69,8 +69,7 @@
   margin: 0px 10px 0px 0px;
   padding: 5px 5px 5px 5px;
   border-radius: 2px;
-  border: 0.5px solid #434f67;
-  background: #093966;
+  background: #252525;
 }
 
 .smsp-icon-sidebar {
@@ -90,4 +89,3 @@ a {
 .item-1.collapse-show-item-accordion-L.smsp-sub-sidebar {
   background-color: #E4F0FC;
 }
-

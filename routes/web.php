@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -9,25 +10,30 @@ use App\Http\Controllers\UserController;
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-// // Halaman utama
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// Halaman utama (Welcome page)
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 
-// // Dashboard (contoh)
-// Route::get('/admin', function () {
-//     return view('user.index', ['title' => 'admin']);
-// })->middleware(['auth'])->name('admin');
+// Dashboard
+Route::get('/dashboard', function () {
+    return view('user.index', ['title' => 'Dashboard']);
+})->name('dashboard');
 
-// // Manajemen User
-// Route::middleware(['auth'])->group(function () {
-//     Route::resource('/admin/users', UserController::class)->except(['show']);
-// });
+// Manajemen RAM (resource controller)
+Route::resource('/rams', RamController::class);
 
-// // // Autentikasi Laravel Breeze (atau Jetstream jika dipasang)
-// // require __DIR__ . '/auth.php';
+// Manajemen User (resource controller tanpa show route, dengan custom names)
+Route::resource('/admin/users', UserController::class)->except(['show'])->names([
+    'index' => 'users.index',
+    'create' => 'users.create',
+    'store' => 'users.store',
+    'edit' => 'users.edit',
+    'update' => 'users.update',
+    'destroy' => 'users.destroy',
+]);

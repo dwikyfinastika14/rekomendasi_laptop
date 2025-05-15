@@ -1,0 +1,33 @@
+.smsp-icon-edit,
+.smsp-icon-delete {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 0 4px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+/* Edit icon style */
+.smsp-icon-edit {
+    background-color: #f0ad4e;
+    /* oranye */
+}
+
+.smsp-icon-edit:hover {
+    background-color: #ec971f;
+    color: white;
+}
+
+/* Delete icon style */
+.smsp-icon-delete {
+    background-color: #d9534f;
+    /* merah */
+}
+
+.smsp-icon-delete:hover {
+    background-color: #c9302c;
+    color: white;
+}

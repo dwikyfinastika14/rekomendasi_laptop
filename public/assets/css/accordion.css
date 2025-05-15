@@ -1,10 +1,10 @@
 .icon-accordion-L {
-  color: rgba(255,169,0,0.68);
+  color: rgba(255, 169, 0, 0.68);
   margin: 0px 0px 7px 0px;
   padding: 11px 10px 10px 12px;
   border-radius: 10px;
   border: 0.5px solid #4f3d3d;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.25);
   font-size: 25px;
 }
 
@@ -27,21 +27,21 @@
 }
 
 .card-header-accordion-L:first-child {
-  border-radius: 0px!important;
+  border-radius: 0px !important;
 }
 
 .card-header-accordion-L {
   padding: .75rem 1.25rem;
-  margin-bottom: -1px!important;
-  background-color: rgb(9,56,101);
+  margin-bottom: -1px !important;
+  background-color: #047a00;
   /*background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #48546e), color-stop(1, #404b62));*/
   border-top: 0.8px solid #f0f7fd;
   border-bottom: 0.8px solid #f0f7fd;
 }
 
 .mb-0 {
-  margin-bottom: 0!important;
-  font-size: 14px!important;
+  margin-bottom: 0 !important;
+  font-size: 14px !important;
 }
 
 .icon-accordion {
@@ -51,13 +51,25 @@
 }
 
 .content-accordion {
-  color: rgb(81,96,123);
+  color: rgb(81, 96, 123);
   font-size: 12px;
 }
 
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-  color: #ffffff!important;
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #ffffff !important;
   background-color: #08345e;
   border-color: #626e88 #626e88 #626e88;
 }
 
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+  background-color: #fafafa;
+}
+
+.fa-caret-down:before {
+  color: #fafafa !important;
+}
