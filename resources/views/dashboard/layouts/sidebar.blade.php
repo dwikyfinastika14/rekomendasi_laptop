@@ -15,7 +15,7 @@
                                 src="assets/img/transparent-ram.png">&nbsp;<a href="/rams"><span
                                     style="color: rgb(98, 95, 95);">Data Ram</span></a></li>
                         <li class="smsp-text-sidebar"><img class="img-fluid smsp-icon-sidebar"
-                                src="assets/img/procesor.png">&nbsp;<a href="data_Prosesor.html"><span
+                                src="assets/img/procesor.png">&nbsp;<a href="/prosesors"><span
                                     style="color: rgb(98, 95, 95);">Data Procesor</span></a></li>
                         <li class="smsp-text-sidebar"><img class="img-fluid smsp-icon-sidebar"
                                 src="assets/img/laptop.png">&nbsp;<a href="data_laptop.html"><span

@@ -7,20 +7,27 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Jalankan migrasi untuk membuat tabel `prosesors`.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('prosesors', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id(); // Primary key
+            $table->string('brand')->comment('Merek prosesor, contoh: Intel, AMD');
+            $table->unsignedSmallInteger('jumlah_core')->comment('Jumlah core prosesor');
+            $table->string('image')->nullable()->comment('Path atau nama file gambar prosesor');
+            $table->timestamps(); // created_at dan updated_at
         });
     }
 
     /**
-     * Reverse the migrations.
+     * Batalkan migrasi dan hapus tabel `prosesors`.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('prosesors');
     }
