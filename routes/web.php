@@ -1,44 +1,44 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RamController;
 use App\Http\Controllers\ProsesorController;
+use App\Http\Controllers\LaptopController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Di sini kamu bisa mendaftarkan route web untuk aplikasi.
-| Routes ini otomatis menggunakan middleware "web" yang berisi sesi, CSRF, dll.
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group that
+| contains the "web" middleware group. Now create something great!
 |
 */
 
-// Halaman utama (welcome)
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Authentication Routes
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login', 'index')->name('login'); // Login page
+    Route::post('/login', 'login'); // Login action
+    Route::post('/logout', 'logout')->name('logout'); // Logout action
+});
 
-// Dashboard
-Route::get('/dashboard', function () {
-    return view('user.index', ['title' => 'Dashboard']);
-})->name('dashboard');
+// Public Routes
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'index')->name('home.index'); // Home page
+});
 
-// Resource routes untuk manajemen RAM
-Route::resource('rams', RamController::class);
+// Dashboard Routes (Protected by 'auth' middleware)
+Route::middleware(['auth'])->prefix('dashboard')->group(function () {
+    // Dashboard Home
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-// Resource routes untuk manajemen user admin, tanpa route show, dan dengan custom name
-Route::resource('admin/users', UserController::class)
-    ->except(['show'])
-    ->names([
-        'index' => 'users.index',
-        'create' => 'users.create',
-        'store' => 'users.store',
-        'edit' => 'users.edit',
-        'update' => 'users.update',
-        'destroy' => 'users.destroy',
-    ]);
-
-// Resource routes untuk manajemen prosesor
-Route::resource('prosesors', ProsesorController::class);
+    // Resource Routes
+    Route::resource('/rams', RamController::class); // CRUD for RAM
+    Route::resource('/prosesors', ProsesorController::class); // CRUD for Processors
+    Route::resource('/laptops', LaptopController::class); // CRUD for Laptops
+});

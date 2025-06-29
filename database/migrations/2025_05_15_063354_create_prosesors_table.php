@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('prosesors', function (Blueprint $table) {
             $table->id(); // Primary key
-            $table->string('brand')->comment('Merek prosesor, contoh: Intel, AMD');
+            $table->string('brand', 100)->comment('Merek prosesor, contoh: Intel, AMD');
             $table->unsignedSmallInteger('jumlah_core')->comment('Jumlah core prosesor');
-            $table->string('image')->nullable()->comment('Path atau nama file gambar prosesor');
+            $table->string('image', 255)->nullable()->comment('Path atau nama file gambar prosesor');
             $table->timestamps(); // created_at dan updated_at
+
+            // Optional: index untuk kolom brand
+            $table->index('brand');
         });
     }
 

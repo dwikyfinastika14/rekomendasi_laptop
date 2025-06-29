@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Prosesor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProsesorController extends Controller
 {
@@ -20,33 +19,35 @@ class ProsesorController extends Controller
 
     public function create()
     {
-        // return view('dashboard.prosesor.create');
+        return view('dashboard.prosesor.create', [
+            'title' => 'Tambah Data Prosesor',
+        ]);
     }
 
     public function store(Request $request)
     {
-        // Validasi input
         $validatedData = $request->validate([
             'brand' => 'required|string|max:255',
             'jumlah_core' => 'required|integer|min:1',
             'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048|dimensions:min_width=100,min_height=100',
         ]);
 
-        // Proses unggah gambar jika ada
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . rand(1, 9) . '.' . $image->getClientOriginalExtension();
+
+            if (!file_exists(public_path(self::IMAGE_PATH))) {
+                mkdir(public_path(self::IMAGE_PATH), 0755, true);
+            }
+
             $image->move(public_path(self::IMAGE_PATH), $imageName);
             $validatedData['image'] = $imageName;
         }
 
-        // Simpan data ke dalam database
         Prosesor::create($validatedData);
 
-        // Redirect dengan pesan sukses
-        return redirect('/prosesors')->with('success', 'Data Prosesor berhasil ditambahkan.');
+        return redirect()->route('prosesors.index')->with('success', 'Data Prosesor berhasil ditambahkan.');
     }
-
 
     public function edit(Prosesor $prosesor)
     {
@@ -56,42 +57,40 @@ class ProsesorController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Prosesor $prosesor)
     {
-        $prosesor = Prosesor::findOrFail($id);
-
-        $request->validate([
-            'brand' => 'required|string',
+        $validatedData = $request->validate([
+            'brand' => 'required|string|max:255',
             'jumlah_core' => 'required|integer|min:1',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048|dimensions:min_width=100,min_height=100',
         ]);
 
-        $prosesor->brand = $request->brand;
-        $prosesor->jumlah_core = $request->jumlah_core;
-
         if ($request->hasFile('image')) {
-            // Hapus file lama jika ada
-            if ($prosesor->image && file_exists(public_path('assets/img/prosesor/' . $prosesor->image))) {
-                unlink(public_path('assets/img/prosesor/' . $prosesor->image));
+            // Hapus gambar lama jika ada
+            if ($prosesor->image && file_exists(public_path(self::IMAGE_PATH . $prosesor->image))) {
+                unlink(public_path(self::IMAGE_PATH . $prosesor->image));
             }
 
-            // Simpan file baru
-            $file = $request->file('image');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('assets/img/prosesor/'), $filename);
+            $image = $request->file('image');
+            $imageName = time() . rand(1, 9) . '.' . $image->getClientOriginalExtension();
 
-            // Update field image
-            $prosesor->image = $filename;
+            if (!file_exists(public_path(self::IMAGE_PATH))) {
+                mkdir(public_path(self::IMAGE_PATH), 0755, true);
+            }
+
+            $image->move(public_path(self::IMAGE_PATH), $imageName);
+            $validatedData['image'] = $imageName;
         }
 
-        $prosesor->save();
+        $prosesor->update($validatedData);
 
-        return redirect()->route('prosesors.index')->with('success', 'Data prosesor berhasil diperbarui.');
+        return redirect()->route('prosesors.index')->with('success', 'Data Prosesor berhasil diperbarui.');
     }
+
     public function destroy(Prosesor $prosesor)
     {
-        if ($prosesor->image && Storage::exists('public/' . $prosesor->image)) {
-            Storage::delete('public/' . $prosesor->image);
+        if ($prosesor->image && file_exists(public_path(self::IMAGE_PATH . $prosesor->image))) {
+            unlink(public_path(self::IMAGE_PATH . $prosesor->image));
         }
 
         $prosesor->delete();

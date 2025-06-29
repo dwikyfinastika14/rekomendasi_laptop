@@ -150,3 +150,43 @@ textarea {
   border-color: #0e4070;
   outline: 0;
 }
+
+.smsp-navbar .navbar-nav .nav-link {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.recommendation-container {
+  margin: 50px auto;
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-header {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #030303;
+}
+
+.btn-submit {
+  background-color: #030303;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: rgb(9, 27, 42);
+  color: #ffffff;
+}
+
+
+.home-container {
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

@@ -10,31 +10,23 @@ class RamController extends Controller
 {
     const RAM_IMAGE_PATH = 'assets/img/ram/';
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view('dashboard.ram.index', [
-            'title' => 'Data Ram',
-            'rams' => Ram::paginate(5)
+            'title' => 'Data RAM',
+            'rams' => Ram::paginate(5),
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        // Bisa ditambahkan view form create disini jika perlu
+        return view('dashboard.ram.create', [
+            'title' => 'Tambah Data RAM',
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // Validasi input
         $validatedData = $request->validate([
             'capacity' => 'required|string|max:20|unique:rams,capacity',
             'type' => 'required|in:DDR3,DDR4,DDR5',
@@ -43,30 +35,35 @@ class RamController extends Controller
             'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048|dimensions:min_width=100,min_height=100',
         ]);
 
-        // Proses unggah gambar jika ada
         if ($request->hasFile('image')) {
             $image = $request->file('image');
+
+            if (!File::exists(public_path(self::RAM_IMAGE_PATH))) {
+                File::makeDirectory(public_path(self::RAM_IMAGE_PATH), 0755, true);
+            }
+
             $imageName = time() . rand(1, 9) . '.' . $image->getClientOriginalExtension();
             $image->move(public_path(self::RAM_IMAGE_PATH), $imageName);
             $validatedData['image'] = $imageName;
         }
 
-        // Simpan data ke dalam database
         Ram::create($validatedData);
 
-        // Redirect dengan pesan sukses
-        return redirect('/rams')->with('success', 'Data RAM Baru Berhasil Ditambahkan');
+        return redirect()->route('rams.index')->with('success', 'Data RAM Baru Berhasil Ditambahkan');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
+    public function edit(Ram $ram)
     {
-        $ram = Ram::findOrFail($id);
+        return view('dashboard.ram.edit', [
+            'title' => 'Edit Data RAM',
+            'ram' => $ram,
+        ]);
+    }
 
+    public function update(Request $request, Ram $ram)
+    {
         $rules = [
-            'capacity' => 'required|string|max:20|unique:rams,capacity,' . $id,
+            'capacity' => 'required|string|max:20|unique:rams,capacity,' . $ram->id,
             'type' => 'required|in:DDR3,DDR4,DDR5',
             'speed' => 'required|integer',
             'description' => 'required|string',
@@ -85,30 +82,28 @@ class RamController extends Controller
 
             $image = $request->file('image');
             $imageName = time() . rand(1, 9) . '.' . $image->getClientOriginalExtension();
+
+            if (!File::exists(public_path(self::RAM_IMAGE_PATH))) {
+                File::makeDirectory(public_path(self::RAM_IMAGE_PATH), 0755, true);
+            }
+
             $image->move(public_path(self::RAM_IMAGE_PATH), $imageName);
             $validatedData['image'] = $imageName;
         }
 
         $ram->update($validatedData);
 
-        return redirect('/rams')->with('success', 'Data RAM Berhasil Diupdate');
+        return redirect()->route('rams.index')->with('success', 'Data RAM Berhasil Diupdate');
     }
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        $ram = Ram::findOrFail($id);
 
-        // Hapus gambar jika ada
+    public function destroy(Ram $ram)
+    {
         if ($ram->image && File::exists(public_path(self::RAM_IMAGE_PATH . $ram->image))) {
             File::delete(public_path(self::RAM_IMAGE_PATH . $ram->image));
         }
 
-        // Hapus data dari database
         $ram->delete();
 
-        // Redirect dengan pesan sukses
-        return redirect('rams')->with('success', 'Data RAM Berhasil Dihapus');
+        return redirect()->route('rams.index')->with('success', 'Data RAM Berhasil Dihapus');
     }
 }

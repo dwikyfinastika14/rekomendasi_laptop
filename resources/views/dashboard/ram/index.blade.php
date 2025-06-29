@@ -18,16 +18,16 @@
             <form class="form-clean">
                 <div class="form-row">
                     <div class="col">
-                        <div class="table-responsive text-black-50 shadow-sm">
+                        <div class="table-responsive-sm text-black-50 shadow-sm">
                             <table class="table table-striped table-hover table-bordered table-sm">
                                 <thead>
                                     <tr class="table-secondary text-center text-black-50">
-                                        <th class="border rounded-0 border-secondary judul-header">No</th>
-                                        <th class="border rounded-0 border-secondary judul-header">Kapasitas</th>
-                                        <th class="border rounded-0 border-secondary judul-header">Jenis</th>
-                                        <th class="border rounded-0 border-secondary judul-header">Kecepatan</th>
-                                        <th class="border rounded-0 border-secondary judul-header">Gambar</th>
-                                        <th class="border rounded-0 border-secondary judul-header">Actions</th>
+                                        <th style="color: black;">No</th>
+                                        <th style="color: black;">Kapasitas</th>
+                                        <th style="color: black;">Jenis</th>
+                                        <th style="color: black;">Kecepatan</th>
+                                        <th style="color: black;">Gambar</th>
+                                        <th style="color: black;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-body">
@@ -42,7 +42,7 @@
                                             <td class="text-center">
                                                 @if ($ram->image)
                                                     <img src="{{ asset('assets/img/ram/' . $ram->image) }}" alt="RAM Image"
-                                                        class="img-thumbnail" style="width: 50px;">
+                                                        class="img-thumbnail" style="width: 100px; height: auto;">
                                                 @else
                                                     <span>No Image</span>
                                                 @endif

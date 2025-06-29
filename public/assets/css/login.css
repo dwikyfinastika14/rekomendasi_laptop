@@ -32,7 +32,7 @@ body {
   border-bottom-left-radius: 20px;
   display: table-cell;
   width: auto;
-  /*height: 380px;*/
+  height: 380px;
   background-size: cover;
 }
 
@@ -42,16 +42,16 @@ body {
   max-width: 900px;
   width: 90%;
   margin: 0 auto;
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 .senkatech-login-container form {
-  /*color: #fff;*/
+  color: #fff;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   display: table-cell;
   width: 380px;
-  background-color: #E4F0FC;
+  background-color: transparent;
   padding: 40px 60px;
 }
 
@@ -72,7 +72,7 @@ body {
 .senkatech-login-container form .form-control {
   border-bottom: 1px solid #787878;
   color: #505e6c !important;
-  background: transparent;
+  background: transparent !important;
   border-top: none;
   border-bottom: 1px solid #dfe7f1;
   border-radius: 0;
@@ -167,7 +167,7 @@ body {
   font-size: 11px;
   width: auto;
   height: 27px;
-  background-color: #3076b4 !important;
+  background-color: #06AA00 !important;
   color: #fff !important;
 }
 
@@ -215,7 +215,7 @@ td {
 
 .btn-login {
   border-radius: 20px;
-  background: #1566b1;
+  background: #06AA00;
   color: #fff !important;
 }
 
@@ -236,9 +236,6 @@ a:hover {
   }
 }
 
-label {
-}
-
 .logo-login {
   width: 110px;
 }
@@ -254,8 +251,7 @@ label {
   }
 }
 
-form {
-}
+
 
 .login-title {
   letter-spacing: 2px;
@@ -266,4 +262,3 @@ form {
   letter-spacing: 2px;
   color: #787878;
 }
-

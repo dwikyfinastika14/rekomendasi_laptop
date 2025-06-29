@@ -48,8 +48,11 @@
                     {{-- 
                     <div class="form-group">
                         <label for="description">Deskripsi</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3"
-                            placeholder="Enter Description">{{ old('description') }}</textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" 
+                                  id="description" 
+                                  name="description" 
+                                  rows="3" 
+                                  placeholder="Enter Description">{{ old('description') }}</textarea>
                         @error('description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -59,7 +62,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save Prosesor</button>
+                    <button type="submit" class="btn btn-submit">Save Prosesor</button>
                 </div>
             </form>
         </div>

@@ -50,21 +50,26 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        @if ($ram->image)
+                            <div class="form-group">
+                                <label>Gambar Saat Ini</label><br>
+                                <img src="{{ asset('assets/img/ram/' . $ram->image) }}" alt="Gambar RAM"
+                                    class="img-thumbnail mb-2" style="max-width: 200px;">
+                            </div>
+                        @endif
 
+                        <!-- Input Gambar Baru -->
                         <div class="form-group">
-                            <label for="image-{{ $ram->id }}">Gambar</label>
+                            <label for="image-{{ $ram->id }}">Ganti Gambar (Opsional)</label>
                             <input type="file" class="form-control-file @error('image') is-invalid @enderror"
                                 id="image-{{ $ram->id }}" name="image"
                                 accept="image/png, image/jpeg, image/jpg, image/webp">
-                            @if ($ram->image)
-                                <small>Current Image:</small><br>
-                                <img src="{{ asset('assets/img/ram/' . $ram->image) }}" alt="RAM Image"
-                                    class="img-thumbnail mb-2" style="width: 80px;">
-                            @endif
+                            <small class="form-text text-muted">Format yang diperbolehkan: png, jpeg, jpg, webp.</small>
                             @error('image')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
                             @enderror
                         </div>
+
 
                         <div class="form-group">
                             <label for="description-{{ $ram->id }}">Deskripsi</label>

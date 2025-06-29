@@ -5,7 +5,7 @@
             <form action="{{ route('rams.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addRamModalLabel">Add Data RAM</h5>
+                    <h5 class="modal-title" id="addRamModalLabel">Add Data Processor</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -66,7 +66,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save RAM</button>
+                    <button type="submit" class="btn btn-submit">Save RAM</button>
                 </div>
             </form>
         </div>

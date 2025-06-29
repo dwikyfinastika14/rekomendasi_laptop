@@ -28,4 +28,34 @@ class Prosesor extends Model
     protected $casts = [
         'jumlah_core' => 'integer',
     ];
+
+    /**
+     * Relasi dengan Laptop
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function laptops()
+    {
+        return $this->hasMany(Laptop::class);
+    }
+
+    /**
+     * Mutator untuk memastikan nama file gambar disimpan dengan format tertentu.
+     *
+     * @param string $value
+     */
+    public function setImageAttribute($value)
+    {
+        $this->attributes['image'] = strtolower($value);
+    }
+
+    /**
+     * Accessor untuk mengembalikan path gambar lengkap.
+     *
+     * @return string
+     */
+    public function getImagePathAttribute()
+    {
+        return $this->image ? asset('storage/prosesors/' . $this->image) : asset('images/default.png');
+    }
 }

@@ -1,13 +1,15 @@
 @foreach ($prosesors as $prosesor)
     <!-- Edit Prosesor Modal -->
     <div class="modal fade" id="editProsesorModal-{{ $prosesor->id }}" tabindex="-1"
-        aria-labelledby="editProsesorModalLabel-{{ $prosesor->id }}" aria-hidden="true">
+        aria-labelledby="editProsesorModalLabel-{{ $prosesor->id }}" aria-hidden="true"
+        data-has-error="{{ $errors->any() && old('edit_modal_id') == $prosesor->id ? 'true' : 'false' }}">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form action="{{ route('prosesors.update', $prosesor->id) }}" method="POST"
                     enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
+                    <input type="hidden" name="edit_modal_id" value="{{ $prosesor->id }}">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editProsesorModalLabel-{{ $prosesor->id }}">Edit Data Prosesor</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -59,16 +61,6 @@
                             @enderror
                         </div>
 
-                        <!-- Optional Deskripsi jika diperlukan -->
-                        {{--
-                        <div class="form-group">
-                            <label for="description-{{ $prosesor->id }}">Deskripsi</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" id="description-{{ $prosesor->id }}" name="description" rows="3">{{ old('description', $prosesor->description ?? '') }}</textarea>
-                            @error('description')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        --}}
                     </div>
 
                     <div class="modal-footer">
